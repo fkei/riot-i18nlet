@@ -1,7 +1,7 @@
-/* riot-i18nlet version 0.2.2 */
+/* riot-i18nlet version 0.2.5 */
 define(['riot', 'i18nlet'], function (riot, I18nlet) { 'use strict';
 
-  var VERSION = "0.2.2";
+  var VERSION = "0.2.5";
 
   riot = riot && riot.hasOwnProperty('default') ? riot['default'] : riot;
   I18nlet = I18nlet && I18nlet.hasOwnProperty('default') ? I18nlet['default'] : I18nlet;
@@ -10,7 +10,6 @@ define(['riot', 'i18nlet'], function (riot, I18nlet) { 'use strict';
       this.message = this[this.riotI18nlet.settings.getMessageFunctionName](opts.context, opts.vals, opts.options);
 
       this.on('update', function () {
-        debugger;
         this.message = this[this.riotI18nlet.settings.getMessageFunctionName](opts.context, opts.vals, opts.options);
       });
   });

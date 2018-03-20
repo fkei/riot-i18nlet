@@ -1,7 +1,7 @@
-/* riot-i18nlet version 0.2.2 */
+/* riot-i18nlet version 0.2.5 */
 'use strict';
 
-var VERSION = "0.2.2";
+var VERSION = "0.2.5";
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
@@ -242,7 +242,6 @@ riot.tag2('riot-i18nlet', '<span>{message}</span>', '', 'class="{opts.class}" ri
     this.message = this[this.riotI18nlet.settings.getMessageFunctionName](opts.context, opts.vals, opts.options);
 
     this.on('update', function () {
-      debugger;
       this.message = this[this.riotI18nlet.settings.getMessageFunctionName](opts.context, opts.vals, opts.options);
     });
 });

@@ -1,5 +1,5 @@
-/* riot-i18nlet version 0.2.2 */
-var VERSION = "0.2.2";
+/* riot-i18nlet version 0.2.5 */
+var VERSION = "0.2.5";
 
 import riot from 'riot';
 
@@ -238,7 +238,6 @@ riot.tag2('riot-i18nlet', '<span>{message}</span>', '', 'class="{opts.class}" ri
     this.message = this[this.riotI18nlet.settings.getMessageFunctionName](opts.context, opts.vals, opts.options);
 
     this.on('update', function () {
-      debugger;
       this.message = this[this.riotI18nlet.settings.getMessageFunctionName](opts.context, opts.vals, opts.options);
     });
 });
