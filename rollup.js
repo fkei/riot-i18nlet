@@ -44,6 +44,48 @@ async function buildIifeAmd() {
     },
     banner: banner,
     intro: intro,
+    file: 'dist/iife.riot-i18nlet+i18nlet.js',
+    sourcemap: true
+  });
+  await bundle.write({
+    format: 'amd',
+    banner: banner,
+    intro: intro,
+    file: 'dist/amd.riot-i18nlet+i18nlet.js',
+    sourcemap: true
+  });
+}
+
+buildIifeAmd();
+
+// iife/amd (i18nlet no bundle)
+async function buildIifeAmdNoBundle() {
+  // create a bundle
+  const bundle = await rollup.rollup({
+    input: 'src/index.js',
+    external: ['riot', 'i18nlet'],
+    plugins: [
+      riot(),
+      nodeResolve({
+        jsnext: true,
+        main: true,
+        browser: true
+      }),
+      commonjs({
+        include: 'node_modules/**',
+        namedExports: namedExports
+      }),
+      buble()
+    ]
+  });
+  await bundle.write({
+    format: 'iife',
+    name: 'riotI18nlet',
+    globals: {
+      riot: 'riot'
+    },
+    banner: banner,
+    intro: intro,
     file: 'dist/iife.riot-i18nlet.js',
     sourcemap: true
   });
@@ -56,7 +98,7 @@ async function buildIifeAmd() {
   });
 }
 
-buildIifeAmd();
+buildIifeAmdNoBundle();
 
 // es/cjs
 async function buildEsCjs() {

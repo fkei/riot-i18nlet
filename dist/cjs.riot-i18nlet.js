@@ -1,7 +1,7 @@
-/* riot-i18nlet version 0.0.1 */
+/* riot-i18nlet version 0.2.1 */
 'use strict';
 
-var VERSION = "0.0.1";
+var VERSION = "0.2.1";
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 

@@ -28,19 +28,12 @@ Internationalization library for riotjs
 Direct Download / CDN
 
 ```js
-<script src="https://unpkg.com/riot-i18nlet/dist/iife.riot-i18nlet.js"></script>
+<script src="https://unpkg.com/riot-i18nlet/dist/iife.riot-i18nlet+i18nlet.js"></script>
 ```
 
 ### other release files
 
-- [amd.riot-i18nlet.js](https://unpkg.com/riot-i18nlet/dist/amd.riot-i18nlet.js)
-- [amd.riot-i18nlet.js.map](https://unpkg.com/riot-i18nlet/dist/amd.riot-riot-i18nlet.js.map)
-- [amd.riot-i18nlet.min.js](https://unpkg.com/riot-i18nlet/dist/amd.i18nlet.min.js)
-- [cjs.riot-i18nlet.js](https://unpkg.com/riot-i18nlet/dist/cjs.riot-i18nlet.js)
-- [es.riot-i18nlet.js](https://unpkg.com/riot-i18nlet/dist/es.riot-i18nlet.js)
-- [iife.riot-i18nlet.js](https://unpkg.com/riot-i18nlet/dist/iife.riot-i18nlet.js)
-- [iife.riot-i18nlet.js.map](https://unpkg.com/riot-i18nlet/dist/iife.riot-i18nlet.js.map)
-- [iife.riot-i18nlet.min.js](https://unpkg.com/riot-i18nlet/dist/iife.riot-i18nlet.min.js)
+- [dist(release) directory](dist)
 
 ### NPM
 
@@ -64,17 +57,7 @@ npm install
 npm run release
 
 ---
-
-出力ファイル
-├── dist
-      ├── amd.riot-i18nlet.js
-      ├── amd.riot-i18nlet.js.map
-      ├── amd.riot-i18nlet.min.js
-      ├── cjs.riot-i18nlet.js
-      ├── es.riot-i18nlet.js
-      ├── iife.riot-i18nlet.js
-      ├── iife.riot-i18nlet.js.map
-      └── iife.riot-i18nlet.min.js
+Output Directory : dist/
 ```
 
 ## :checkered_flag: Getting started
@@ -83,7 +66,7 @@ npm run release
 
 ```html
 <script src="https://unpkg.com/riot/riot"></script>
-<script src="https://unpkg.com/riot-i18nlet/dist/iife.riot-i18nlet.js"></script>
+<script src="https://unpkg.com/riot-i18nlet/dist/iife.riot-i18nlet+i18n.js"></script>
 
 <!-- HTML -->
 <spec>
