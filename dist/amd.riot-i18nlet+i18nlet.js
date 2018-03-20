@@ -1,7 +1,7 @@
-/* riot-i18nlet version 0.2.1 */
+/* riot-i18nlet version 0.2.2 */
 define(['riot'], function (riot) { 'use strict';
 
-  var VERSION = "0.2.1";
+  var VERSION = "0.2.2";
 
   riot = riot && riot.hasOwnProperty('default') ? riot['default'] : riot;
 
@@ -12,7 +12,6 @@ define(['riot'], function (riot) { 'use strict';
 
   var debug = false;
   var defaultLangage = 'en';
-  var langageSeparator = ':';
   var variableKeyPrefix = '{{';
   var variableKeySuffix = '}}';
   var defaultNoConvertVariable = null;
@@ -45,8 +44,11 @@ define(['riot'], function (riot) { 'use strict';
   var defaultLoad = function (langage, terms) {
     var this$1 = this;
 
+    if (!this.store[langage]) {
+      this.store[langage] = {};
+    }
     Object.keys(terms).forEach(function (context) {
-      this$1.k2v[("" + langage + (this$1.settings.langageSeparator) + context)] = terms[context];
+      this$1.store[langage][context] = terms[context];
     });
   };
 
@@ -69,12 +71,11 @@ define(['riot'], function (riot) { 'use strict';
       if ( settings === void 0 ) { settings = {}; }
 
     this.version = VERSION$1 || '';
-    this.k2v = {};
+    this.store = {};
 
     ///
     this.settings = {};
     this.settings.currentLangage = this.settings.defaultLangage = settings.defaultLangage || defaultLangage;
-    this.settings.langageSeparator = settings.langageSeparator || langageSeparator;
     this.settings.debug = settings.debug || debug;
 
     this.settings.variableKeyPrefix = settings.variableKeyPrefix || variableKeyPrefix;
@@ -163,7 +164,7 @@ define(['riot'], function (riot) { 'use strict';
   };
 
   I18nlet.prototype._getDefaultText = function _getDefaultText (context, text, defaultText) {
-    if ((typeof text) !== 'undefined') {
+    if ((typeof text) !== 'undefined' && text !== null) {
       return text;
     }
     this.logger.debug(("context not found. context:'" + context + "'"));
@@ -187,12 +188,15 @@ define(['riot'], function (riot) { 'use strict';
     }
     options.langage = options.langage ? options.langage : this.currentLangage();
 
+    var langageStore = this.store[options.langage];
+    if (!langageStore || !langageStore[context]) {
+      return this._getDefaultText(context, null, options.defaultText);
+    }
 
-    var ctx = "" + (options.langage) + (this.settings.langageSeparator) + context;
-    var value = this.k2v[ctx];
+    var value = langageStore[context];
 
     if (!value) {
-      this.logger.debug(("Context not found. '" + context + "' for '" + ctx + "'"));
+      this.logger.debug(("Context not found. '" + context + "'"));
     }
 
     var ret = value;
@@ -210,13 +214,13 @@ define(['riot'], function (riot) { 'use strict';
     }
 
     if (!options.ref) {
-      return this._getDefaultText(context, ret, options.defaultText);
+      return ret;
     }
 
     var matchRef;
     while (matchRef = this.regexp.exec(ret)) { // eslint-disable-line
-      var ctxRef = "" + (options.langage || this$1.currentLangage()) + (this$1.settings.langageSeparator) + (matchRef[1].trim());
-      var valRef = this$1.k2v[ctxRef];
+      var ctxRef = matchRef[1].trim();
+      var valRef = langageStore[ctxRef];
       if (!valRef) {
         this$1.logger.debug(("It can not convert the constant part. '" + (matchRef[0]) + "' for '" + ret + "'"));
         ret = (typeof this$1.settings.noConvertVariable === 'string') ? ret.replace(matchRef[0], this$1.settings.noConvertVariable) : ret;
@@ -228,7 +232,7 @@ define(['riot'], function (riot) { 'use strict';
 
     }
 
-    return this._getDefaultText(context, ret, options.defaultText);
+    return ret;
 
   };
 

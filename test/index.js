@@ -27,7 +27,7 @@ describe('basic test case.', () => {
   it('new', () => {
     riotI18nlet.init();
     riotI18nlet.loads(data);
-    assert.ok(!!riotI18nlet.k2v['ja:hello']);
+    assert.ok(!!riotI18nlet.store.ja.hello);
   });
 
   it('get message i(context, vals, {ref, langage)', () => {

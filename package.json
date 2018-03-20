@@ -1,6 +1,6 @@
 {
   "name": "riot-i18nlet",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Internationalization library for riotjs",
   "main": "dist/cjs.riot-i18nlet.js",
   "jsnext:main": "dist/es.riot-i18nlet.js",
@@ -38,7 +38,7 @@
   },
   "homepage": "https://github.com/fkei/riot-i18nlet#readme",
   "dependencies": {
-    "i18nlet": "^0.0.5"
+    "i18nlet": ">=0.2.1"
   },
   "devDependencies": {
     "eslint": "^4.18.2",
