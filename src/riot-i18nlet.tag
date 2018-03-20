@@ -4,7 +4,6 @@
     this.message = this[this.riotI18nlet.settings.getMessageFunctionName](opts.context, opts.vals, opts.options);
 
     this.on('update', function () {
-      debugger;
       this.message = this[this.riotI18nlet.settings.getMessageFunctionName](opts.context, opts.vals, opts.options);
     });
   </script>
