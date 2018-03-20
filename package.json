@@ -1,6 +1,6 @@
 {
   "name": "riot-i18nlet",
-  "version": "0.0.1",
+  "version": "0.2.1",
   "description": "Internationalization library for riotjs",
   "main": "dist/cjs.riot-i18nlet.js",
   "jsnext:main": "dist/es.riot-i18nlet.js",

@@ -1,0 +1,24 @@
+{
+  "name": "riot-i18nlet",
+  "description": "Internationalization library for riotjs",
+  "main": "dist/cjs.riot-i18nlet.js",
+  "authors": [
+    "fkei <kei.topaz@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "i18n",
+    "localization",
+    "browser",
+    "riotjs"
+  ],
+  "homepage": "https://github.com/fkei/riot-i18nlet",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
